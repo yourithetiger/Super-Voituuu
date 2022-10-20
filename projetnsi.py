@@ -22,4 +22,7 @@ while play:
             
     
 
-
+fenetre=display.set_mode((640,480))
+display.set_caption("voituuu")
+sol = image.load("backstart.jpg").convert()
+fenetre.blit(sol, (0,0))
