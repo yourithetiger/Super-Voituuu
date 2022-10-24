@@ -1,4 +1,3 @@
-from os import times_result
 from pygame import *
 import time
 import random
@@ -13,8 +12,7 @@ fenetre=display.set_mode((640,480))
 display.set_caption("voituuu")
 sol = image.load("backstart.jpg").convert()
 fenetre.blit(sol, (0,0))
-def test:
-    print(tg)
+
 play=1
 while play:
     display.flip()
@@ -28,6 +26,3 @@ fenetre=display.set_mode((640,480))
 display.set_caption("voituuu")
 sol = image.load("backstart.jpg").convert()
 fenetre.blit(sol, (0,0))
-
-
-
