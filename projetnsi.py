@@ -1,19 +1,22 @@
 from pygame import *
-import pygame #
+import pygame # certaines fontions ne fonctionennent pas sans le "pygame."
 import time
 import random
 
 init()
 clock = pygame.time.Clock()
 fenetre_x = 1440
-fenetre_y = 864
+fenetre_y = 763
 fenetre=display.set_mode((fenetre_x,fenetre_y))
 display.set_caption("voituuu")
 
 #fond
-fond = image.load("backstart.jpg").convert()
-fenetre.blit(fond, (0,0))
-fond_y = 0
+fond = image.load("fond.jpg").convert()
+fenetre.blit(fond, (-400,0))
+#route
+route = image.load("route.jpg").convert()
+fenetre.blit(route, (300,0))
+route_y = 0
 
 #voiture
 car = image.load("voituuu.png").convert_alpha()
@@ -34,11 +37,12 @@ while play:
                     car_pos = car_pos.move(1,0)
 
     clock.tick(60)
-    fond_y += 1
-    if fond_y > 864:
-        fond_y = 0
-    fenetre.blit(fond, (0, fond_y))
-    fenetre.blit(fond, (0, fond_y - 864))
+    route_y += 1
+    if route_y > 763:
+        route_y = 0
+    fenetre.blit(fond, (-400,0))
+    fenetre.blit(route, (300, route_y))
+    fenetre.blit(route, (300, route_y - 763))
     fenetre.blit(car, car_pos)
     display.flip()
 
