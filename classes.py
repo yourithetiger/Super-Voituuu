@@ -9,7 +9,15 @@ class Game:
         self.player = Player()
         self.background = image.load("fond.jpg").convert()
         self.road = Road()
-        self.pressed = {}
+        
+    def play(self, fenetre, touche):
+        fenetre.blit(self.background, (-400,0))
+        self.road.defil(fenetre)
+        self.player.draw(fenetre)
+        if touche[K_q]:
+                 self.player.move(-1)
+        if touche[K_d]:
+                 self.player.move(1)
 
 class Road:
     
@@ -20,11 +28,15 @@ class Road:
         self.rect.y = 763
         self.rect2 = self.rect
         self.rect2.y -= 763
-    def defil(self):
+    def defil(self, screen):
         self.rect = self.rect.move(0,1)
         if self.rect.y > 763:
             self.rect.y = 0
         self.rect2.y = self.rect.y - 763
+        screen.blit(self.image, self.rect)
+        screen.blit(self.image,self.rect2)
+
+        
         
          
 class Player(sprite.Sprite):
@@ -43,14 +55,14 @@ class Player(sprite.Sprite):
             self.rect = self.rect.move(dir*self.speed,0)
         elif dir == -1 and not self.rect.x < 300:
             self.rect = self.rect.move(dir*self.speed,0)
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
 
 
 class Obstacle(sprite.Sprite):
-    def __init__(self):
+    def __init__(self, x):
         super().__init__()
-
         self.image = image.load("voituuu.png").convert_alpha()
         self.image = transform.smoothscale(self.image, (100, 200))
-
         self.rect = self.image.get_rect()
-        self.rect.x = random
+        self.rect.x = x
