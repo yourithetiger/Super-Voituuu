@@ -83,6 +83,22 @@ print(f"{clock.get_fps()FPS }")
 pygame.display.flip()
 
 
+class Obstacle:
+    def __init__(self, image, type):
+        self.image = image
+        self.type = type
+        self.rect = self.image[self.type].get_rect()
+        self.rect.x = screen_widht
+
+    def update(self):
+        self.rect.x -= game_speed
+        if self.rect.x < -self.rect.width:
+            obstacles.pop()
+
+    def draw(self, screen):
+       screen.blit(self.image[self.type], self.rect)
+          
+          
 
             
     
