@@ -48,6 +48,4 @@ def menu(death_count):
             if event.type == KEYDOWN:
                 main()
         display.flip()
-
-test=1
 menu(death_count=0)
