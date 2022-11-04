@@ -38,14 +38,14 @@ class Game:
             self.player.move(1)
     
     def obsspawn(self,fenetre):
-        if len(self.ObsLeft) < 3 and self.LeftTime == 0 :
+        if self.LeftTime == 0 :
             self.ObsVoie = random.randint(0,1)
             if self.ObsVoie :
                 self.ObsPos = (self.road.x_right-190*multiplier,-250*multiplier) 
             else :
                 self.ObsPos = (self.road.x_right-100*multiplier,-250*multiplier) 
             self.ObsLeft.append(Obstacle(self.ObsPos,1))
-            self.LeftTime = random.randint(80,150)
+            self.LeftTime = random.randint(120,150)
         if self.RightTime == 0 :
             self.ObsVoie = random.randint(0,1)
             if self.ObsVoie :
@@ -53,7 +53,7 @@ class Game:
             else :
                   self.ObsPos = (self.road.x_left+120*multiplier,-250*multiplier) 
             self.ObsRight.append(Obstacle(self.ObsPos,0))
-            self.RightTime = random.randint(80,150)
+            self.RightTime = random.randint(120,150)
         self.obsupdate(fenetre, self.ObsLeft)
         self.obsupdate(fenetre, self.ObsRight)
         
