@@ -49,4 +49,5 @@ def menu(death_count):
                 main()
         display.flip()
 
+test=1
 menu(death_count=0)
