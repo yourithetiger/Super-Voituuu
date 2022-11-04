@@ -18,6 +18,8 @@ class Game:
         self.Obstacles = []
         self.dead = 0
         self.score = Score()
+        self.LeftTime = 0
+        self.RightTime = 0
         
     def play(self, fenetre, touche):
         fenetre.blit(self.background, (0,0))
@@ -26,6 +28,8 @@ class Game:
         self.deplacement(touche)
         self.obsspawn(fenetre)
         self.score.draw(fenetre)
+        self.LeftTime -= 1
+        self.RightTime -= 1 
             
     def deplacement(self, touche):
         if touche[K_q] and not self.player.rect.x < self.road.x_left:
@@ -34,23 +38,22 @@ class Game:
             self.player.move(1)
     
     def obsspawn(self,fenetre):
-        i = 0
-        if len(self.ObsLeft) == 0:
+        if len(self.ObsLeft) < 3 and self.LeftTime == 0 :
             self.ObsVoie = random.randint(0,1)
             if self.ObsVoie :
-                self.ObsPos = (self.road.x_right-300*multiplier, 0) 
+                self.ObsPos = (self.road.x_right-190*multiplier,-250*multiplier) 
             else :
-                self.ObsPos = (self.road.x_right-140*multiplier, 0) 
+                self.ObsPos = (self.road.x_right-100*multiplier,-250*multiplier) 
             self.ObsLeft.append(Obstacle(self.ObsPos,1))
-            self.Obstacles.append(Obstacle(self.ObsPos,1))
-        if len(self.ObsRight) == 0 :
+            self.LeftTime = random.randint(80,150)
+        if self.RightTime == 0 :
             self.ObsVoie = random.randint(0,1)
             if self.ObsVoie :
-                  self.ObsPos = (self.road.x_left+30*multiplier, 0)
+                  self.ObsPos = (self.road.x_left+30*multiplier,-250*multiplier)
             else :
-                  self.ObsPos = (self.road.x_left+200*multiplier, 0) 
+                  self.ObsPos = (self.road.x_left+120*multiplier,-250*multiplier) 
             self.ObsRight.append(Obstacle(self.ObsPos,0))
-            self.Obstacles.append(Obstacle(self.ObsPos,0))
+            self.RightTime = random.randint(80,150)
         self.obsupdate(fenetre, self.ObsLeft)
         self.obsupdate(fenetre, self.ObsRight)
         
@@ -59,7 +62,7 @@ class Game:
              obs.draw(fenetre)
              obs.update()
              if obs.rect.y > fenetre_y-obs.rect.height:
-                LoR.pop(0)
+                LoR.remove(obs)
                 if self.player.rect.x < fenetre_x/2:
                     self.score.update(2)
                 else:
@@ -77,7 +80,7 @@ class Road:
     
     def __init__(self):
         self.image = image.load("route.jpg").convert()
-        self.image = transform.smoothscale(self.image, (656*multiplier, fenetre_y))
+        self.image = transform.smoothscale(self.image, (400*multiplier, fenetre_y))
         self.rect = self.image.get_rect()
         self.x_left = (fenetre_x/2) - (self.rect.width/2)
         self.x_right = (fenetre_x/2) + (self.rect.width/2)
@@ -101,7 +104,7 @@ class Player(sprite.Sprite):
         super().__init__()
         self.score = 0
         self.image = image.load("voituuu.png").convert_alpha()
-        self.image = transform.smoothscale(self.image, (100*multiplier, 200*multiplier))
+        self.image = transform.smoothscale(self.image, (70*multiplier, 140*multiplier))
         self.rect = self.image.get_rect()
         self.rect.x = fenetre_x/2
         self.rect.y = 500*multiplier
@@ -117,7 +120,7 @@ class Obstacle(sprite.Sprite):
     def __init__(self, pos, sens):
         super().__init__()
         self.image = image.load("voituuu.png").convert_alpha()
-        self.image = transform.smoothscale(self.image, (100*multiplier, 200*multiplier))
+        self.image = transform.smoothscale(self.image, (70*multiplier, 140*multiplier))
         self.rect = self.image.get_rect()
         self.rect = self.rect.move(pos)
         self.sens = sens

@@ -2,7 +2,7 @@
 from pygame import *
 init()
 multiplier = 1.5
-fenetre_x = 1920*multiplier
+fenetre_x = 1050*multiplier
 fenetre_y = 763*multiplier
 titre = "Voituuu"
 GameSpeed = 5

@@ -20,12 +20,12 @@ def main():
       touche = pygame.key.get_pressed()
       game.play(fenetre, touche) 
       if game.dead:
+        play = 0
         menu(death_count=game.Deathcount)     
       display.flip()
       
 def menu(death_count):
-    global points
-    run = True
+    run = 1
 
     while run:
         fenetre.fill((255, 255, 255))
@@ -44,7 +44,7 @@ def menu(death_count):
         fenetre.blit(text, textRect)
         for event in pygame.event.get():
             if event.type == QUIT:
-                run = False
+                run = 0
             if event.type == KEYDOWN:
                 main()
         display.flip()
