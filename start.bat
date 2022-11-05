@@ -1,1 +1,1 @@
-python3 projetnsi.py
+python Sources/Main.py
