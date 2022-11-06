@@ -46,8 +46,8 @@ class Game:
         if self.LeftTime == 0 :
             self.ObsVoie = random.randint(0,1)
 
-            if self.ObsVoie : self.ObsPos = (self.road.x_right-190,-250) 
-            else : self.ObsPos = (self.road.x_right-100,-250) 
+            if self.ObsVoie : self.ObsPos = (self.road.x_right-185,-250) 
+            else : self.ObsPos = (self.road.x_right-82,-250) 
 
             self.ObsLeft.append(Obstacle(self.ObsPos,1))
             self.LeftTime = random.randint(120,180)
@@ -55,8 +55,8 @@ class Game:
         if self.RightTime == 0 :
             self.ObsVoie = random.randint(0,1)
 
-            if self.ObsVoie : self.ObsPos = (self.road.x_left+30,-250)
-            else : self.ObsPos = (self.road.x_left+120,-250) 
+            if self.ObsVoie : self.ObsPos = (self.road.x_left+15,-250)
+            else : self.ObsPos = (self.road.x_left+115,-250) 
 
             self.ObsRight.append(Obstacle(self.ObsPos,0))
             self.RightTime = random.randint(90,150)
@@ -69,7 +69,7 @@ class Game:
              obs.draw(window)
              obs.update()
 
-             if obs.hitbox.y > gameHeight - obs.hitbox.height:
+             if obs.hitbox.y > gameHeight + obs.hitbox.height:
                 LoR.remove(obs)
                 if self.player.hitbox.x < gameWidth/2: self.score.update(2)
                 else: self.score.update(1)
@@ -104,8 +104,10 @@ class Player(sprite.Sprite):
     def __init__(self) :
         super().__init__()
         self.score = 0
-        self.type = random.randint(1,5)
+        self.speed = 10
 
+    def initType(self, type):
+        self.type = type
         if self.type == 1: self.image = image.load("../nsipoo/Assets/player/perso1.png")
         elif self.type == 2: self.image = image.load("../nsipoo/Assets/player/perso2.png")
         elif self.type == 3: self.image = image.load("../nsipoo/Assets/player/perso3.png")
@@ -114,7 +116,7 @@ class Player(sprite.Sprite):
 
         self.image = transform.smoothscale(self.image, (70, 140))
         self.hitbox = pygame.Rect(gameWidth/2 - 70 / 2, gameHeight - 140 - 20, 70, 140)
-        self.speed = 10
+        
 
     def move(self, dir):
         self.hitbox = self.hitbox.move(dir*self.speed,0)
