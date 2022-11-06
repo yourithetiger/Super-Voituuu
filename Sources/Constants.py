@@ -20,3 +20,9 @@ greenColor = (0,255,0)
 blueColor = (0,0,255)
 
 mainFont = font.Font('freesansbold.ttf', 30)
+
+perso1 = image.load("../nsipoo/Assets/player/perso1.png")
+perso2 = image.load("../nsipoo/Assets/player/perso2.png")
+perso3 = image.load("../nsipoo/Assets/player/perso3.png")
+perso4 = image.load("../nsipoo/Assets/player/perso4.png")
+perso5 = image.load("../nsipoo/Assets/player/perso5.png")
