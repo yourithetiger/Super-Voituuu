@@ -153,7 +153,7 @@ class Obstacle(sprite.Sprite):
         screen.blit(self.image, self.hitbox)
     
     def update(self):
-            self.hitbox.y += self.speed
+            self.hitbox = self.hitbox.move(0, self.speed)
 
 class Score():
     def __init__(self):

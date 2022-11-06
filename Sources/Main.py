@@ -11,6 +11,7 @@ deathImage = pygame.image.load("../nsipoo/Assets/images/deathmenu.png")
 deathImage = transform.scale(deathImage, (gameWidth, gameHeight))
 
 boutonCar1 = perso1.get_rect()
+boutonCar1 = boutonCar1.move(150,150)
 boutonCar2 = perso2.get_rect()
 boutonCar3 = perso3.get_rect()
 boutonCar4 = perso4.get_rect()
