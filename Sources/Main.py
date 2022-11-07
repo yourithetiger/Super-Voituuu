@@ -51,30 +51,35 @@ def main():
           game.player.initType(1)
           game.STATE = GameState.PLAY
           mixer.music.load("../nsipoo/Assets/sounds/music.mp3")
+          mixer.music.set_volume(0.2)
           mixer.music.play(-1, 57, 5)
 
         if(checkBoutonHover(boutonCar2, mousePos)):
           game.player.initType(2)
           game.STATE = GameState.PLAY
           mixer.music.load("../nsipoo/Assets/sounds/music.mp3")
-          mixer.music.play(-1, 57, 5)
+          mixer.music.set_volume(0.2)
+          mixer.music.play(-1, 32,15)
 
         if(checkBoutonHover(boutonCar3, mousePos)):
           game.player.initType(3)
           game.STATE = GameState.PLAY
           mixer.music.load("../nsipoo/Assets/sounds/music.mp3")
+          mixer.music.set_volume(0.2)
           mixer.music.play(-1, 57, 5)
 
         if(checkBoutonHover(boutonCar4, mousePos)):
           game.player.initType(4)
           game.STATE = GameState.PLAY
           mixer.music.load("../nsipoo/Assets/sounds/music.mp3")
+          mixer.music.set_volume(0.2)
           mixer.music.play(-1, 57, 5)
 
         if(checkBoutonHover(boutonCar5, mousePos)):
           game.player.initType(5)
           game.STATE = GameState.PLAY
           mixer.music.load("../nsipoo/Assets/sounds/music.mp3")
+          mixer.music.set_volume(0.2)
           mixer.music.play(-1, 57, 5)
 
         if(checkBoutonHover(boutonQuit, mousePos)):
