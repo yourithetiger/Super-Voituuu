@@ -18,6 +18,7 @@ whiteColor = (255,255,255)
 redColor = (255,0,0)
 greenColor = (0,255,0)
 blueColor = (0,0,255)
+yellowColor = (255,255,0)
 
 mainFont = font.Font('freesansbold.ttf', 30)
 

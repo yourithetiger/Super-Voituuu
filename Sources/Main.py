@@ -9,32 +9,33 @@ clock = time.Clock()
 display.set_caption(gameTitle)
 deathImage = pygame.image.load("../nsipoo/Assets/images/deathmenu.png")
 deathImage = transform.scale(deathImage, (gameWidth, gameHeight))
+menuImage = pygame.image.load("../nsipoo/Assets/images/menu2.png")
+menuImage = transform.scale(menuImage, (gameWidth, gameHeight))
 
 boutonCar1 = perso1.get_rect()
-boutonCar1 = boutonCar1.move(450, 300)
+boutonCar1 = boutonCar1.move(450, 380)
 
 
 boutonCar2 = perso2.get_rect()
-boutonCar2 = boutonCar2.move(595, 300)
+boutonCar2 = boutonCar2.move(595, 380)
 
 
 boutonCar3 = perso3.get_rect()
-boutonCar3 = boutonCar3.move(768, 300)
+boutonCar3 = boutonCar3.move(768, 380)
 
 
 boutonCar4 = perso4.get_rect()
-boutonCar4 = boutonCar4.move(941, 300)
+boutonCar4 = boutonCar4.move(941, 380)
 
 
 boutonCar5 = perso5.get_rect()
-boutonCar5 = boutonCar5.move(1115, 300)
+boutonCar5 = boutonCar5.move(1115, 380)
 
 
-boutonQuit = pygame.Rect(gameWidth/2 - 140/2, gameHeight/2 - 40/2 + 200, 140, 40)
+boutonQuit = pygame.Rect(gameWidth/2 - 140/2, gameHeight/2 - 40/2 + 240, 140, 40)
 boutonMENU = pygame.Rect(gameWidth/2 - 250/2, gameHeight/2 - 40/2 + 120, 250, 40)
 boutonQuitDeath = pygame.Rect(gameWidth/2 - 140/2, gameHeight/2 - 40/2 + 250, 140, 40)
-
-gameOverSound = SoundManger(0.2, "../nsipoo/Assets/sounds/gameOver.wav")
+gameOverSound = pygame.mixer.Sound("../nsipoo/Assets/sounds/gameOver.wav")
 
 def main():
   game = Game()
@@ -92,25 +93,26 @@ def main():
         if game.isOver: game.STATE = GameState.DEAD
 
 def menu(game, mousePos):
-    window.fill(blackColor)
+    window.blit(menuImage, (0,0))
 
     if game.Deathcount == 0:
+        window.blit(menuImage, (0,0))
         text = mainFont.render("Choose your car", True, whiteColor)
-        window.blit(text, (gameWidth / 2 - text.get_width() / 2, gameHeight / 4 - text.get_height()))
+        window.blit(text, (gameWidth / 2 - text.get_width() / 2, gameHeight / 3 - text.get_height()))
 
-        if(checkBoutonHover(boutonCar1, mousePos)):  draw.rect(window, whiteColor, boutonCar1)
+        if(checkBoutonHover(boutonCar1, mousePos)):  draw.rect(window, greenColor, boutonCar1)
         window.blit(perso1, boutonCar1)
 
-        if(checkBoutonHover(boutonCar2, mousePos)):  draw.rect(window, whiteColor, boutonCar2)
+        if(checkBoutonHover(boutonCar2, mousePos)):  draw.rect(window, greenColor, boutonCar2)
         window.blit(perso2, boutonCar2)
 
-        if(checkBoutonHover(boutonCar3, mousePos)):  draw.rect(window, whiteColor, boutonCar3)
+        if(checkBoutonHover(boutonCar3, mousePos)):  draw.rect(window, greenColor, boutonCar3)
         window.blit(perso3, boutonCar3)
 
-        if(checkBoutonHover(boutonCar4, mousePos)):  draw.rect(window, whiteColor, boutonCar4)
+        if(checkBoutonHover(boutonCar4, mousePos)):  draw.rect(window, greenColor, boutonCar4)
         window.blit(perso4, boutonCar4)
 
-        if(checkBoutonHover(boutonCar5, mousePos)):  draw.rect(window, whiteColor, boutonCar5)
+        if(checkBoutonHover(boutonCar5, mousePos)):  draw.rect(window, greenColor, boutonCar5)
         window.blit(perso5, boutonCar5)
 
         if(checkBoutonHover(boutonQuit, mousePos)):  draw.rect(window, whiteColor, boutonQuit)
@@ -142,10 +144,11 @@ def menu(game, mousePos):
 
 
 
-        score = mainFont.render(str(game.score.point), True, whiteColor)
+        score = mainFont.render(str(game.score.point), True, yellowColor)
         scoreRect = score.get_rect()
         scoreRect.center = (gameWidth / 2, gameHeight / 2 - 20 )
         window.blit(score, scoreRect)
+
 
     textRect = text.get_rect()
     textRect.center = (gameWidth // 2, gameHeight // 2)
