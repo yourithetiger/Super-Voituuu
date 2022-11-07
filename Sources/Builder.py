@@ -37,6 +37,7 @@ class Game:
         self.score.draw(window)
         self.LeftTime -= 1
         self.RightTime -= 1 
+        
             
     def deplacement(self, keyBind):
         if keyBind[K_q] and not self.player.hitbox.x < self.road.x_left: self.player.move(-0.6)
@@ -78,6 +79,7 @@ class Game:
              
     def col(self, obs):
         if self.player.hitbox.colliderect(obs.hitbox):
+            gameOverSound.play().set_volume(0.2)
             self.STATE = GameState.DEAD
             self.Deathcount += 1
             

@@ -18,7 +18,7 @@ whiteColor = (255,255,255)
 redColor = (255,0,0)
 greenColor = (0,255,0)
 blueColor = (0,0,255)
-
+gameOverSound = mixer.Sound("../nsipoo/Assets/sounds/gameOver.wav")
 mainFont = font.Font('freesansbold.ttf', 30)
 
 perso1 = image.load("../nsipoo/Assets/player/perso1.png")
