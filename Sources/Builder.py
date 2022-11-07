@@ -17,7 +17,7 @@ class Game:
         self.STATE = GameState.MENU
         self.Deathcount = 0
         self.player = Player()
-        self.background = image.load("../nsipoo/Assets/images/fond.jpg").convert()
+        self.background = image.load("Assets/images/fond.jpg").convert()
         self.background = transform.smoothscale(self.background, (gameWidth, gameHeight))
         self.road = Road()
         self.ObsLeft = []
@@ -85,7 +85,7 @@ class Game:
             
 class Road:
     def __init__(self):
-        self.image = image.load("../nsipoo/Assets/images/route.jpg").convert()
+        self.image = image.load("Assets/images/route.jpg").convert()
         self.image = transform.smoothscale(self.image, (400, gameHeight))
         self.rect = self.image.get_rect()
         self.x_left = (gameWidth/2) - (self.rect.width/2)
@@ -111,11 +111,11 @@ class Player(sprite.Sprite):
 
     def initType(self, type):
         self.type = type
-        if self.type == 1: self.image = image.load("../nsipoo/Assets/player/perso1.png")
-        elif self.type == 2: self.image = image.load("../nsipoo/Assets/player/perso2.png")
-        elif self.type == 3: self.image = image.load("../nsipoo/Assets/player/perso3.png")
-        elif self.type == 4: self.image = image.load("../nsipoo/Assets/player/perso4.png")
-        elif self.type == 5: self.image = image.load("../nsipoo/Assets/player/perso5.png")
+        if self.type == 1: self.image = image.load("Assets/player/perso1.png")
+        elif self.type == 2: self.image = image.load("Assets/player/perso2.png")
+        elif self.type == 3: self.image = image.load("Assets/player/perso3.png")
+        elif self.type == 4: self.image = image.load("Assets/player/perso4.png")
+        elif self.type == 5: self.image = image.load("Assets/player/perso5.png")
 
         self.image = transform.smoothscale(self.image, (70, 140))
         self.hitbox = pygame.Rect(gameWidth/2 - 70 / 2, gameHeight - 140 - 20, 70, 140)
@@ -133,13 +133,13 @@ class Obstacle(sprite.Sprite):
         super().__init__()
         self.type = random.randint(1,7)
         
-        if self.type == 1: self.image = image.load("../nsipoo/Assets/enemy/car1.png")
-        elif self.type == 2: self.image = image.load("../nsipoo/Assets/enemy/car2.png")
-        elif self.type == 3: self.image = image.load("../nsipoo/Assets/enemy/car3.png")
-        elif self.type == 4: self.image = image.load("../nsipoo/Assets/enemy/car4.png")
-        elif self.type == 5: self.image = image.load("../nsipoo/Assets/enemy/car5.png")
-        elif self.type == 6: self.image = image.load("../nsipoo/Assets/enemy/car6.png")
-        elif self.type == 7: self.image = image.load("../nsipoo/Assets/enemy/car7.png")
+        if self.type == 1: self.image = image.load("Assets/enemy/car1.png")
+        elif self.type == 2: self.image = image.load("Assets/enemy/car2.png")
+        elif self.type == 3: self.image = image.load("Assets/enemy/car3.png")
+        elif self.type == 4: self.image = image.load("Assets/enemy/car4.png")
+        elif self.type == 5: self.image = image.load("Assets/enemy/car5.png")
+        elif self.type == 6: self.image = image.load("Assets/enemy/car6.png")
+        elif self.type == 7: self.image = image.load("Assets/enemy/car7.png")
 
         self.image = transform.smoothscale(self.image, (70, 140))
         self.hitbox = pygame.Rect(0, 0, 70, 140)
